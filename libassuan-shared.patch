@@ -20,7 +20,7 @@
  	assuan-logging.c
  
 -libassuan_a_LIBADD = @LIBOBJS@
-+libassuan_la_LIBADD = @LIBOBJS@
++libassuan_la_LIBADD = @LTLIBOBJS@
  
  assuan-errors.c : assuan.h
  	$(srcdir)/mkerrors < $(srcdir)/assuan.h > assuan-errors.c
