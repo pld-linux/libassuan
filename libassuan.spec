@@ -68,6 +68,7 @@ Statyczna biblioteka assuan.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+CFLAGS="%{rpmcflags} -fPIC"
 %configure
 
 %{__make}
