@@ -12,7 +12,7 @@ Patch0:		%{name}-shared.patch
 Patch1:		%{name}-info.patch
 URL:		http://www.gnupg.org/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1.9.3
+BuildRequires:	automake >= 1:1.9.3
 BuildRequires:	libtool
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
