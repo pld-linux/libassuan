@@ -1,0 +1,37 @@
+--- libassuan-0.6.0/src/Makefile.am.orig	2003-08-06 10:41:58.000000000 +0200
++++ libassuan-0.6.0/src/Makefile.am	2003-08-10 11:57:06.271909392 +0200
+@@ -27,12 +27,12 @@
+ bin_SCRIPTS = libassuan-config
+ m4datadir = $(datadir)/aclocal
+ m4data_DATA = libassuan.m4
+-lib_LIBRARIES = libassuan.a
++lib_LTLIBRARIES = libassuan.la
+ include_HEADERS = assuan.h
+ 
+ 
+ #libassuan_a_LDFLAGS =
+-libassuan_a_SOURCES = \
++libassuan_la_SOURCES = \
+ 	assuan-defs.h \
+ 	assuan-util.c \
+ 	assuan-errors.c \
+@@ -51,7 +51,7 @@
+ 	assuan-domain-server.c \
+ 	assuan-logging.c
+ 
+-libassuan_a_LIBADD = @LIBOBJS@
++libassuan_la_LIBADD = @LIBOBJS@
+ 
+ assuan-errors.c : assuan.h
+ 	$(srcdir)/mkerrors < $(srcdir)/assuan.h > assuan-errors.c
+--- libassuan-0.6.0/configure.ac.orig	2003-08-06 10:34:42.000000000 +0200
++++ libassuan-0.6.0/configure.ac	2003-08-10 11:56:23.735375928 +0200
+@@ -57,7 +57,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+-AC_PROG_RANLIB
++AC_PROG_LIBTOOL
+ #AC_ARG_PROGRAM
+ 
+ if test "$GCC" = yes; then
