@@ -1,13 +1,13 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl):	Assuan - biblioteka IPC dla serwerów nie dzia³aj±cych ci±gle
 Name:		libassuan
-Version:	0.6.6
+Version:	0.6.7
 Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/libassuan/%{name}-%{version}.tar.gz
-# Source0-md5:	a647cd8312b14d200d1304b7d512596d
+# Source0-md5:	db4e6939fafbaae80cab11a67f28771d
 Patch0:		%{name}-shared.patch
 Patch1:		%{name}-info.patch
 URL:		http://www.gnupg.org/
@@ -18,14 +18,14 @@ BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
-package. It used to be included with the latter packages but the
+This is the IPC library used by GnuPG 1.9, GPGME and a few other 
+packages. It used to be included with the latter packages but the
 authors decided to make your life not too easy and separated it out to
-a standalone library.
+a stand alone library.
 
 %description -l pl
 To jest biblioteka komunikacji miêdzyprocesowej (IPC) u¿ywana przez
-GnuPG 1.9, gpgme oraz stary pakiet newpg. By³a do³±czana do tych
+GnuPG 1.9, GPGME oraz parê innych pakietów. By³a do³±czana do tych
 pakietów, ale autorzy zdecydowali, ¿eby ju¿ nie u³atwiaæ tak ¿ycia i
 wydzielili j±.
 
