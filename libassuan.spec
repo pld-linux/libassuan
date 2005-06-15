@@ -1,4 +1,4 @@
-%bcond_without	static	#don't build static library
+%bcond_without	static_libs	#don't build static library
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl):	Assuan - biblioteka IPC dla serwerów nie dzia³aj±cych ci±gle
 Name:		libassuan
@@ -66,7 +66,7 @@ Statyczna biblioteka assuan.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_static:--disable-static}
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/*.m4
 %{_infodir}/*.info*
 
-%if %{with static}
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
