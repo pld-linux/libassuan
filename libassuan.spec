@@ -1,4 +1,6 @@
+# Conditional build:
 %bcond_without	static_libs	#don't build static library
+#
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl):	Assuan - biblioteka IPC dla serwerów nie dzia³aj±cych ci±gle
 Name:		libassuan
