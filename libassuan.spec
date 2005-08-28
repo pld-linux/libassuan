@@ -14,7 +14,7 @@ Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/libassuan/%{name}-%{version}.tar.gz
 # Source0-md5:	4cde037c3fcb2f0eeb695b1db6e56bba
 Patch0:		%{name}-shared.patch
 Patch1:		%{name}-info.patch
-URL:		http://www.gnupg.org/
+URL:		http://www.gnupg.org/related_software/libassuan/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9.3
 BuildRequires:	libtool
