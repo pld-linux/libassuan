@@ -35,3 +35,12 @@
  #AC_ARG_PROGRAM
  
  if test "$GCC" = yes; then
+--- libassuan-0.9.0/tests/Makefile.am.orig	2006-09-05 13:32:53.000000000 +0200
++++ libassuan-0.9.0/tests/Makefile.am	2006-09-15 12:33:12.295971000 +0200
+@@ -33,5 +33,5 @@
+ 
+ noinst_HEADERS = common.h
+ noinst_PROGRAMS = $(TESTS)
+-LDADD =  ../src/libassuan.a  # $(GPG_ERROR_LIBS)
++LDADD =  ../src/libassuan.la  # $(GPG_ERROR_LIBS)
+ 
