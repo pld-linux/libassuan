@@ -1,29 +1,40 @@
---- libassuan-0.6.0/src/Makefile.am.orig	2003-08-06 10:41:58.000000000 +0200
-+++ libassuan-0.6.0/src/Makefile.am	2003-08-10 11:57:06.271909392 +0200
-@@ -27,12 +27,12 @@
+--- libassuan-0.9.3/src/Makefile.am.orig	2006-10-09 12:26:41.000000000 +0200
++++ libassuan-0.9.3/src/Makefile.am	2006-10-11 12:01:50.365971000 +0200
+@@ -25,7 +25,7 @@
+ MOSTLYCLEANFILES = assuan-errors.c
+ 
+ if HAVE_PTH
+-libassuan_pth = libassuan-pth.a
++libassuan_pth = libassuan-pth.la
+ else
+ libassuan_pth = 
+ endif
+@@ -33,7 +33,7 @@
  bin_SCRIPTS = libassuan-config
  m4datadir = $(datadir)/aclocal
  m4data_DATA = libassuan.m4
--lib_LIBRARIES = libassuan.a
-+lib_LTLIBRARIES = libassuan.la
+-lib_LIBRARIES = libassuan.a $(libassuan_pth)
++lib_LTLIBRARIES = libassuan.la $(libassuan_pth)
  include_HEADERS = assuan.h
  
  
- #libassuan_a_LDFLAGS =
--libassuan_a_SOURCES = \
-+libassuan_la_SOURCES = \
- 	assuan-defs.h \
- 	assuan-util.c \
- 	assuan-errors.c \
-@@ -51,7 +51,7 @@
- 	assuan-domain-server.c \
- 	assuan-logging.c
+@@ -55,12 +55,12 @@
+ 	assuan-logging.c \
+ 	assuan-socket.c
  
+-libassuan_a_SOURCES = $(common_sources) assuan-io.c
 -libassuan_a_LIBADD = @LIBOBJS@
++libassuan_la_SOURCES = $(common_sources) assuan-io.c
 +libassuan_la_LIBADD = @LTLIBOBJS@
  
- assuan-errors.c : assuan.h
- 	$(srcdir)/mkerrors < $(srcdir)/assuan.h > assuan-errors.c
+ if HAVE_PTH
+-libassuan_pth_a_SOURCES = $(common_sources) assuan-io-pth.c
+-libassuan_pth_a_LIBADD = @LIBOBJS@
++libassuan_pth_la_SOURCES = $(common_sources) assuan-io-pth.c
++libassuan_pth_la_LIBADD = @LTLIBOBJS@ $(PTH_LIBS)
+ endif
+ 
+ assuan-errors.c : assuan.h mkerrors
 --- libassuan-0.6.0/configure.ac.orig	2003-08-06 10:34:42.000000000 +0200
 +++ libassuan-0.6.0/configure.ac	2003-08-10 11:56:23.735375928 +0200
 @@ -57,7 +57,7 @@
@@ -35,12 +46,12 @@
  #AC_ARG_PROGRAM
  
  if test "$GCC" = yes; then
---- libassuan-0.9.0/tests/Makefile.am.orig	2006-09-05 13:32:53.000000000 +0200
-+++ libassuan-0.9.0/tests/Makefile.am	2006-09-15 12:33:12.295971000 +0200
-@@ -33,5 +33,5 @@
+--- libassuan-0.9.3/tests/Makefile.am.orig	2006-10-10 12:05:25.000000000 +0200
++++ libassuan-0.9.3/tests/Makefile.am	2006-10-11 12:02:10.555971000 +0200
+@@ -37,5 +37,5 @@
  
  noinst_HEADERS = common.h
  noinst_PROGRAMS = $(TESTS)
--LDADD =  ../src/libassuan.a  # $(GPG_ERROR_LIBS)
-+LDADD =  ../src/libassuan.la  # $(GPG_ERROR_LIBS)
+-LDADD =  ../src/libassuan.a  $(NETLIBS) # $(GPG_ERROR_LIBS)
++LDADD =  ../src/libassuan.la  $(NETLIBS) # $(GPG_ERROR_LIBS)
  
