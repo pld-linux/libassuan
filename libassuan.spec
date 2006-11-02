@@ -5,13 +5,13 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl):	Assuan - biblioteka IPC dla serwerów nie dzia³aj±cych ci±gle
 Name:		libassuan
-Version:	0.9.3
+Version:	1.0.0
 Release:	1
 Epoch:		1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/libassuan/%{name}-%{version}.tar.bz2
-# Source0-md5:	60add4aebf1961436da3a470d6ac833c
+Source0:	ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
+# Source0-md5:	f1580ef149e629629a9639a5afdb5908
 Patch0:		%{name}-shared.patch
 Patch1:		%{name}-info.patch
 URL:		http://www.gnupg.org/related_software/libassuan/
@@ -94,19 +94,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libassuan.so.*.*.*
+%attr(755,root,root) %{_libdir}/libassuan-pth.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/libassuan-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*.h
-%{_aclocaldir}/*.m4
-%{_infodir}/*.info*
+%attr(755,root,root) %{_libdir}/libassuan.so
+%attr(755,root,root) %{_libdir}/libassuan-pth.so
+%{_libdir}/libassuan.la
+%{_libdir}/libassuan-pth.la
+%{_includedir}/assuan.h
+%{_aclocaldir}/libassuan.m4
+%{_infodir}/assuan.info*
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libassuan.a
+%{_libdir}/libassuan-pth.a
 %endif
