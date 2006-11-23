@@ -1,5 +1,5 @@
---- libassuan-0.9.3/src/Makefile.am.orig	2006-10-09 12:26:41.000000000 +0200
-+++ libassuan-0.9.3/src/Makefile.am	2006-10-11 12:01:50.365971000 +0200
+--- libassuan-1.0.1/src/Makefile.am.orig	2006-11-21 19:17:18.000000000 +0100
++++ libassuan-1.0.1/src/Makefile.am	2006-11-23 19:30:28.776620250 +0100
 @@ -25,7 +25,7 @@
  MOSTLYCLEANFILES = assuan-errors.c
  
@@ -18,7 +18,7 @@
  include_HEADERS = assuan.h
  
  
-@@ -55,12 +55,12 @@
+@@ -55,13 +55,13 @@
  	assuan-logging.c \
  	assuan-socket.c
  
@@ -29,8 +29,10 @@
  
  if HAVE_PTH
 -libassuan_pth_a_SOURCES = $(common_sources) assuan-io-pth.c
+-libassuan_pth_a_CFLAGS = $(AM_CFLAGS) $(PTH_CFLAGS)
 -libassuan_pth_a_LIBADD = @LIBOBJS@
 +libassuan_pth_la_SOURCES = $(common_sources) assuan-io-pth.c
++libassuan_pth_la_CFLAGS = $(AM_CFLAGS) $(PTH_CFLAGS)
 +libassuan_pth_la_LIBADD = @LTLIBOBJS@ $(PTH_LIBS)
  endif
  
