@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Assuan - an IPC library for non-persistent servers
-Summary(pl):	Assuan - biblioteka IPC dla serwerów nie dzia³aj±cych ci±gle
+Summary(pl.UTF-8):   Assuan - biblioteka IPC dla serwerÃ³w nie dziaÅ‚ajÄ…cych ciÄ…gle
 Name:		libassuan
 Version:	1.0.1
 Release:	1
@@ -28,34 +28,34 @@ packages. It used to be included with the latter packages but the
 authors decided to make your life not too easy and separated it out to
 a stand alone library.
 
-%description -l pl
-To jest biblioteka komunikacji miêdzyprocesowej (IPC) u¿ywana przez
-GnuPG 1.9, GPGME oraz parê innych pakietów. By³a do³±czana do tych
-pakietów, ale autorzy zdecydowali, ¿eby ju¿ nie u³atwiaæ tak ¿ycia i
-wydzielili j±.
+%description -l pl.UTF-8
+To jest biblioteka komunikacji miÄ™dzyprocesowej (IPC) uÅ¼ywana przez
+GnuPG 1.9, GPGME oraz parÄ™ innych pakietÃ³w. ByÅ‚a doÅ‚Ä…czana do tych
+pakietÃ³w, ale autorzy zdecydowali, Å¼eby juÅ¼ nie uÅ‚atwiaÄ‡ tak Å¼ycia i
+wydzielili jÄ….
 
 %package devel
 Summary:	Header files for assuan library
-Summary(pl):	Pliki nag³ówkowe biblioteki assuan
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki assuan
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files for assuan library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki assuan.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki assuan.
 
 %package static
 Summary:	Static assuan library
-Summary(pl):	Statyczna biblioteka assuan
+Summary(pl.UTF-8):   Statyczna biblioteka assuan
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static assuan library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka assuan.
 
 %prep
