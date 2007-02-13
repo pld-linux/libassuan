@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Assuan - an IPC library for non-persistent servers
-Summary(pl.UTF-8):   Assuan - biblioteka IPC dla serwerów nie działających ciągle
+Summary(pl.UTF-8):	Assuan - biblioteka IPC dla serwerów nie działających ciągle
 Name:		libassuan
 Version:	1.0.1
 Release:	1
@@ -36,7 +36,7 @@ wydzielili ją.
 
 %package devel
 Summary:	Header files for assuan library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki assuan
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki assuan
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -48,7 +48,7 @@ Pliki nagłówkowe biblioteki assuan.
 
 %package static
 Summary:	Static assuan library
-Summary(pl.UTF-8):   Statyczna biblioteka assuan
+Summary(pl.UTF-8):	Statyczna biblioteka assuan
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
