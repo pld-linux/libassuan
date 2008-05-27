@@ -5,15 +5,16 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl.UTF-8):	Assuan - biblioteka IPC dla serwerów nie działających ciągle
 Name:		libassuan
-Version:	1.0.4
-Release:	2
+Version:	1.0.5
+Release:	1
 Epoch:		1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
-# Source0-md5:	ffb95bf2bac23e173f5a83a270f7524a
+# Source0-md5:	c2db0974fcce4401f48f3fa41c4edc5a
 Patch0:		%{name}-shared.patch
 Patch1:		%{name}-info.patch
+Patch2:		%{name}-ac.patch
 URL:		http://www.gnupg.org/related_software/libassuan/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
@@ -23,14 +24,14 @@ BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This is the IPC library used by GnuPG 1.9, GPGME and a few other 
+This is the IPC library used by GnuPG 2, GPGME and a few other
 packages. It used to be included with the latter packages but the
 authors decided to make your life not too easy and separated it out to
 a stand alone library.
 
 %description -l pl.UTF-8
 To jest biblioteka komunikacji międzyprocesowej (IPC) używana przez
-GnuPG 1.9, GPGME oraz parę innych pakietów. Była dołączana do tych
+GnuPG 2, GPGME oraz parę innych pakietów. Była dołączana do tych
 pakietów, ale autorzy zdecydowali, żeby już nie ułatwiać tak życia i
 wydzielili ją.
 
@@ -62,6 +63,7 @@ Statyczna biblioteka assuan.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -97,7 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libassuan.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libassuan.so.0
 %attr(755,root,root) %{_libdir}/libassuan-pth.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libassuan-pth.so.0
 
 %files devel
 %defattr(644,root,root,755)
