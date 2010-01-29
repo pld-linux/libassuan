@@ -5,22 +5,22 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl.UTF-8):	Assuan - biblioteka IPC dla serwerów nie działających ciągle
 Name:		libassuan
-Version:	1.0.5
+Version:	2.0.0
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
-# Source0-md5:	c2db0974fcce4401f48f3fa41c4edc5a
-Patch0:		%{name}-shared.patch
-Patch1:		%{name}-info.patch
-Patch2:		%{name}-ac.patch
+# Source0-md5:	59bc0ae7194c412d7a522029005684b2
+Patch0:		%{name}-info.patch
+Patch1:		%{name}-ac.patch
 URL:		http://www.gnupg.org/related_software/libassuan/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
-BuildRequires:	libtool
-BuildRequires:	pth-devel >= 1.2.0
+BuildRequires:	libgpg-error-devel >= 1.4
+BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	texinfo
+Requires:	libgpg-error >= 1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,6 +40,7 @@ Summary:	Header files for assuan library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki assuan
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	libgpg-error-devel >= 1.4
 
 %description devel
 Header files for assuan library.
@@ -63,7 +64,6 @@ Statyczna biblioteka assuan.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -72,7 +72,7 @@ Statyczna biblioteka assuan.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_static_libs:--disable-static}
+	%{?with_static_libs:--enable-static}
 %{__make}
 
 %install
@@ -89,10 +89,10 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%post devel	-p	/sbin/postshell
+%post	devel -p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun devel	-p	/sbin/postshell
+%postun	devel -p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
@@ -100,16 +100,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libassuan.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libassuan.so.0
-%attr(755,root,root) %{_libdir}/libassuan-pth.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libassuan-pth.so.0
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/libassuan-config
 %attr(755,root,root) %{_libdir}/libassuan.so
-%attr(755,root,root) %{_libdir}/libassuan-pth.so
 %{_libdir}/libassuan.la
-%{_libdir}/libassuan-pth.la
 %{_includedir}/assuan.h
 %{_aclocaldir}/libassuan.m4
 %{_infodir}/assuan.info*
@@ -118,5 +114,4 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libassuan.a
-%{_libdir}/libassuan-pth.a
 %endif
