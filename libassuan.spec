@@ -39,6 +39,7 @@ wydzielili ją.
 Summary:	Header files for assuan library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki assuan
 Group:		Development/Libraries
+Conflicts:	libassuan1-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	libgpg-error-devel >= 1.4
 
