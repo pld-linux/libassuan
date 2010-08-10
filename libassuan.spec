@@ -17,10 +17,10 @@ Patch1:		%{name}-ac.patch
 URL:		http://www.gnupg.org/related_software/libassuan/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
-BuildRequires:	libgpg-error-devel >= 1.4
+BuildRequires:	libgpg-error-devel >= 1.8
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	texinfo
-Requires:	libgpg-error >= 1.4
+Requires:	libgpg-error >= 1.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,7 +41,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki assuan
 Group:		Development/Libraries
 Conflicts:	libassuan1-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	libgpg-error-devel >= 1.4
+Requires:	libgpg-error-devel >= 1.8
 
 %description devel
 Header files for assuan library.
