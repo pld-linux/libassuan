@@ -5,23 +5,23 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl.UTF-8):	Assuan - biblioteka IPC dla serwerów nie działających ciągle
 Name:		libassuan
-Version:	2.3.0
+Version:	2.4.0
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
-# Source0-md5:	d3effa069a3ccf924c8ed8a6d46cbc8d
+# Source0-md5:	27b0c99c924b96d19a23eb00b75a0f59
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-ac.patch
 Patch2:		%{name}-am.patch
 URL:		http://www.gnupg.org/related_software/libassuan/
 BuildRequires:	autoconf >= 2.61
-BuildRequires:	automake >= 1:1.10
-BuildRequires:	libgpg-error-devel >= 1.8
+BuildRequires:	automake >= 1:1.14
+BuildRequires:	libgpg-error-devel >= 1.17
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	texinfo
-Requires:	libgpg-error >= 1.8
+Requires:	libgpg-error >= 1.17
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,7 +42,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki assuan
 Group:		Development/Libraries
 Conflicts:	libassuan1-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	libgpg-error-devel >= 1.8
+Requires:	libgpg-error-devel >= 1.17
 
 %description devel
 Header files for assuan library.
