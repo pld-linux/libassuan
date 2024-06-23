@@ -1,26 +1,26 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static library
+%bcond_without	static_libs	# static library
 #
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl.UTF-8):	Assuan - biblioteka IPC dla serwerów nie działających ciągle
 Name:		libassuan
-Version:	2.5.7
+Version:	3.0.0
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
-# Source0-md5:	fe8310b1a5bcaa32d70af476fa2b942a
+# Source0-md5:	b7f42a82a4864fb275c290a155cd1b8a
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-ac.patch
-URL:		http://www.gnupg.org/related_software/libassuan/
+URL:		https://www.gnupg.org/related_software/libassuan/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.14
-BuildRequires:	libgpg-error-devel >= 1.17
+BuildRequires:	libgpg-error-devel >= 1.29
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	texinfo
-Requires:	libgpg-error >= 1.17
+Requires:	libgpg-error >= 1.29
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,7 +41,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki assuan
 Group:		Development/Libraries
 Conflicts:	libassuan1-devel
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	libgpg-error-devel >= 1.17
+Requires:	libgpg-error-devel >= 1.29
 
 %description devel
 Header files for assuan library.
@@ -82,6 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libassuan.la
+
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 %clean
@@ -100,13 +103,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libassuan.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libassuan.so.0
+%attr(755,root,root) %ghost %{_libdir}/libassuan.so.9
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/libassuan-config
 %attr(755,root,root) %{_libdir}/libassuan.so
-%{_libdir}/libassuan.la
 %{_includedir}/assuan.h
 %{_aclocaldir}/libassuan.m4
 %{_infodir}/assuan.info*
