@@ -5,13 +5,13 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Summary(pl.UTF-8):	Assuan - biblioteka IPC dla serwerów nie działających ciągle
 Name:		libassuan
-Version:	3.0.0
+Version:	3.0.1
 Release:	1
 Epoch:		1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
-# Source0-md5:	b7f42a82a4864fb275c290a155cd1b8a
+Source0:	https://www.gnupg.org/ftp/gcrypt/libassuan/%{name}-%{version}.tar.bz2
+# Source0-md5:	6f0d239302ae3b8d4aefcb499b137530
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-ac.patch
 URL:		https://www.gnupg.org/related_software/libassuan/
